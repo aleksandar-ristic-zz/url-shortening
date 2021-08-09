@@ -1,0 +1,31 @@
+.hero-section {
+	.bg-img {
+		width: 100%;
+		height: 90vw;
+		background: url('/images/illustration-working.svg') no-repeat left;
+		background-size: 135%;
+		background-position-x: 1.5rem;
+	}
+	.headline {
+		padding: 3rem 1.5rem;
+		margin: auto;
+		text-align: center;
+	}
+
+	@include breakpoint-up(lg) {
+		display: flex;
+		padding-left: 10rem;
+
+		.bg-img {
+			flex: 0 0 42%;
+			order: 2;
+			height: 30rem;
+			background-size: contain;
+		}
+		.headline {
+			flex: 0 0 58%;
+			text-align: left;
+			padding: 0;
+		}
+	}
+}

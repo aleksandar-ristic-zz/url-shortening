@@ -1,0 +1,126 @@
+header {
+	position: relative;
+	padding: $lg 0;
+
+	.logo-name {
+		a {
+			font-weight: $fw700;
+			font-size: 2.125rem;
+			color: $veryDarkBlue;
+		}
+	}
+
+	.mobile-menu {
+		width: 1.5rem;
+		height: 1.375rem;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		span {
+			width: 100%;
+			height: 3px;
+			background-color: $gray;
+			transition: transform 0.3s ease, opacity 0.3s ease;
+		}
+
+		&.active {
+			span:first-of-type {
+				transform: translateY(9px) rotateZ(45deg);
+			}
+			span:nth-of-type(2) {
+				transform: translateX(-9px);
+				opacity: 0;
+			}
+			span:last-of-type {
+				transform: translateY(-10px) rotateZ(-45deg);
+			}
+		}
+	}
+
+	nav.flex {
+		position: absolute;
+		top: 3.35rem;
+		width: calc(100% - 3rem);
+		padding: 1.5rem 1.5rem 2.5rem;
+		border-radius: 0.5rem;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		background-color: $darkViolet;
+		transform: translateY(-150%);
+		transition: transform 0.5s ease;
+		overflow: hidden;
+
+		a {
+			color: $white;
+			font-size: $font22;
+			font-weight: $fw500;
+		}
+		.left,
+		.right {
+			transition: transform 0.5s ease 0.3s;
+			width: 100%;
+		}
+		.left {
+			transform: translateX(-100%);
+			border-bottom: 1px solid $grayishViolet;
+			& > * {
+				padding: 0.75rem 0;
+			}
+			& > *:last-child {
+				padding-bottom: 1.75rem;
+			}
+		}
+		.right {
+			transform: translateX(120%);
+
+			& > *:first-child {
+				padding: 1.75rem 0 1.35rem;
+			}
+			a.btn {
+				display: block;
+				padding: $xs 0;
+				font-size: $font18;
+				border-radius: 1.5rem;
+			}
+		}
+
+		&.active {
+			transform: translateY(0);
+
+			.left,
+			.right {
+				transform: translateX(0);
+			}
+		}
+	}
+	@include breakpoint-up(md) {
+		.mobile-menu {
+			display: none;
+		}
+		nav.flex {
+			position: static;
+			width: 100%;
+			padding: 0;
+			transform: translate(0);
+			flex-direction: row;
+			justify-content: space-between;
+
+			.left,
+			.right {
+				transform: translate(0);
+
+				& > * {
+					transform: translate(0);
+				}
+			}
+		}
+	}
+	@include breakpoint-up(lg) {
+		& > * {
+			padding: $lg 0;
+		}
+	}
+}

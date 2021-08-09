@@ -1,0 +1,42 @@
+.footer {
+	padding: 3.25rem 0;
+	background-color: $veryDarkViolet;
+	text-align: center;
+
+	.logo-name {
+		margin-bottom: 3.25rem;
+		a {
+			font-size: $font30;
+			font-weight: $fw700;
+			color: $white;
+		}
+	}
+	h4 {
+		margin-bottom: 1.5rem;
+		font-weight: $fw500;
+		color: $white;
+	}
+	ul:not(:first-of-type) {
+		h4 {
+			margin-top: 2.35rem;
+		}
+	}
+	a {
+		color: $gray;
+		line-height: 2;
+		font-size: $font18;
+	}
+	.social {
+		margin-top: 3.25rem;
+		display: flex;
+		justify-content: center;
+
+		img {
+			width: $font24;
+			height: auto;
+		}
+		& > *:not(:last-child) {
+			margin-right: $font18;
+		}
+	}
+}

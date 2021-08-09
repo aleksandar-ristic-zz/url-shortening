@@ -1,0 +1,55 @@
+.stat-section {
+	padding-bottom: 0.1rem;
+	color: $grayishViolet;
+	background-color: $bg-gray;
+
+	.stat-card-wrapper {
+		padding-top: 5rem;
+
+		.stat-card {
+			position: relative;
+			width: 100%;
+			margin-bottom: 5.9rem;
+			padding: 5.35rem $md 2.5rem;
+			text-align: center;
+			border-radius: 0.5rem;
+			background-color: $white;
+			box-shadow: 2px 2px 5px hsla(0, 0, 0, 0.1);
+
+			.stat-img {
+				position: absolute;
+				top: 0;
+				left: 50%;
+				width: 5.85rem;
+				height: 5.85rem;
+				border-radius: 50%;
+				background-color: $darkViolet;
+				transform: translate(-50%, -50%);
+				z-index: 5;
+
+				img {
+					position: relative;
+					top: 50%;
+					width: auto;
+					height: 3rem;
+					transform: translateY(-50%);
+				}
+			}
+			.stat-text {
+				margin-top: 0.75rem;
+				font-size: 1rem;
+			}
+
+			&:not(:last-of-type)::after {
+				content: '';
+				position: absolute;
+				bottom: -3rem;
+				left: 50%;
+				width: 0.5rem;
+				height: 3rem;
+				background-color: $cyan;
+				transform: translateX(-50%);
+			}
+		}
+	}
+}

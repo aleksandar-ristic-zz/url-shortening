@@ -1,0 +1,29 @@
+/* *** Breakpoints *** */
+
+// this width and bigger
+// 640px 1024px 1400px
+$breakpoints-up: (
+	'md': '40em',
+	'lg': '64em',
+	'xl': '89.95em'
+);
+
+// this width and smaller
+// 639px 1023px 1399px
+$breakpoints-down: (
+	'sm': '39.975em',
+	'md': '63.975em',
+	'lg': '87.4375em'
+);
+
+@mixin breakpoint-up($size) {
+	@media (min-width: map-get($breakpoints-up, $size)) {
+		@content;
+	}
+}
+
+@mixin breakpoint-down($size) {
+	@media (max-width: map-get($breakpoints-down, $size)) {
+		@content;
+	}
+}
