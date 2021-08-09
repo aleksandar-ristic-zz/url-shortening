@@ -107,14 +107,51 @@ header {
 			transform: translate(0);
 			flex-direction: row;
 			justify-content: space-between;
+			background-color: $white;
 
 			.left,
 			.right {
 				transform: translate(0);
+				display: flex;
+				align-items: center;
 
 				& > * {
 					transform: translate(0);
+					margin: 0;
+					padding: 0;
+					a:not(.btn) {
+						margin-right: 1rem;
+						color: $grayishViolet;
+						transition: color 0.3s ease;
+
+						&:hover {
+							color: $veryDarkViolet;
+						}
+					}
+					a {
+						font-size: 1rem;
+						font-weight: $fw500;
+					}
+					a.btn {
+						height: $lg;
+						font-size: 1rem;
+						margin-left: $font24;
+						line-height: $lg;
+						padding: 0 $font22;
+					}
 				}
+			}
+			.left {
+				justify-content: flex-start;
+				padding-left: 3.25rem;
+				border: 0;
+
+				& > *:last-child {
+					padding: 0;
+				}
+			}
+			.right {
+				justify-content: flex-end;
 			}
 		}
 	}

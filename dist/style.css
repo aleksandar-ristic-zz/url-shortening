@@ -272,16 +272,64 @@ header nav.flex.active .right {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    background-color: white;
   }
   header nav.flex .left,
   header nav.flex .right {
     -webkit-transform: translate(0);
             transform: translate(0);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   header nav.flex .left > *,
   header nav.flex .right > * {
     -webkit-transform: translate(0);
             transform: translate(0);
+    margin: 0;
+    padding: 0;
+  }
+  header nav.flex .left > * a:not(.btn),
+  header nav.flex .right > * a:not(.btn) {
+    margin-right: 1rem;
+    color: #9e9aa7;
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+  }
+  header nav.flex .left > * a:not(.btn):hover,
+  header nav.flex .right > * a:not(.btn):hover {
+    color: #232127;
+  }
+  header nav.flex .left > * a,
+  header nav.flex .right > * a {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  header nav.flex .left > * a.btn,
+  header nav.flex .right > * a.btn {
+    height: 2.5rem;
+    font-size: 1rem;
+    margin-left: 1.5rem;
+    line-height: 2.5rem;
+    padding: 0 1.375rem;
+  }
+  header nav.flex .left {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    padding-left: 3.25rem;
+    border: 0;
+  }
+  header nav.flex .left > *:last-child {
+    padding: 0;
+  }
+  header nav.flex .right {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
 }
 
@@ -314,20 +362,36 @@ header nav.flex.active .right {
   }
   .hero-section .bg-img {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 42%;
-            flex: 0 0 42%;
+        -ms-flex: 0 0 45%;
+            flex: 0 0 45%;
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;
-    height: 30rem;
-    background-size: contain;
+    height: 34rem;
+    max-height: 80vh;
+    background-size: 125%;
+    background-position-x: 0;
   }
   .hero-section .headline {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 58%;
-            flex: 0 0 58%;
+        -ms-flex: 0 0 55%;
+            flex: 0 0 55%;
     text-align: left;
     padding: 0;
+  }
+  .hero-section .headline .main-text {
+    font-size: 5.375rem;
+    line-height: 1.1;
+    margin-bottom: 0;
+  }
+  .hero-section .headline .second-text {
+    max-width: 36rem;
+    font-size: 1.5rem;
+  }
+  .hero-section .headline .btn-cta {
+    height: 3.5625rem;
+    line-height: 3.5625rem;
+    padding: 0 2.5rem;
   }
 }
 

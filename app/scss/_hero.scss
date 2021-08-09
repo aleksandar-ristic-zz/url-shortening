@@ -17,15 +17,32 @@
 		padding-left: 10rem;
 
 		.bg-img {
-			flex: 0 0 42%;
+			flex: 0 0 45%;
 			order: 2;
-			height: 30rem;
-			background-size: contain;
+			height: 34rem;
+			max-height: 80vh;
+			background-size: 125%;
+			background-position-x: 0;
 		}
 		.headline {
-			flex: 0 0 58%;
+			flex: 0 0 55%;
 			text-align: left;
 			padding: 0;
+
+			.main-text {
+				font-size: 5.375rem;
+				line-height: 1.1;
+				margin-bottom: 0;
+			}
+			.second-text {
+				max-width: 36rem;
+				font-size: $font24;
+			}
+			.btn-cta {
+				height: 3.5625rem;
+				line-height: 3.5625rem;
+				padding: 0 $lg;
+			}
 		}
 	}
 }
