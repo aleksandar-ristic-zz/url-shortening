@@ -156,6 +156,10 @@ header {
 			}
 			.right {
 				justify-content: flex-end;
+
+				& > *:first-child {
+					padding: 0;
+				}
 			}
 		}
 	}

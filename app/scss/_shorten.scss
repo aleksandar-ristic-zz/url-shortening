@@ -4,6 +4,7 @@
 	padding-bottom: 5.5rem;
 
 	.link-shorten-container {
+		position: relative;
 		padding: 1.5rem;
 		background: $darkViolet url('/images/bg-boost-mobile.svg') no-repeat top;
 		background-position-x: 20vw;
@@ -21,14 +22,39 @@
 		}
 
 		input[type='text'] {
+			height: calc(3rem - 6px);
 			font-size: 1rem;
 			padding: 0 1rem;
 			color: $veryDarkBlue;
+			border: 3px solid transparent;
 			outline: none;
 			flex: 1;
 		}
 		input[type='text']::placeholder {
 			color: $grayishViolet;
+		}
+
+		.error-container {
+			position: absolute;
+			overflow: hidden;
+			bottom: 1rem;
+			left: 4rem;
+			height: 2rem;
+			width: 50%;
+
+			.link-error {
+				transform: translateY(-110%);
+				top: 0;
+				left: 0;
+				position: absolute;
+				font-size: $font14;
+				color: $red;
+				transition: transform 0.5s ease;
+
+				&:active {
+					transform: translateY(0);
+				}
+			}
 		}
 	}
 

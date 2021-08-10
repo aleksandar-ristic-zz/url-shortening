@@ -354,6 +354,9 @@ header nav.flex.active .right {
         -ms-flex-pack: end;
             justify-content: flex-end;
   }
+  header nav.flex .right > *:first-child {
+    padding: 0;
+  }
 }
 
 @media (min-width: 64em) {
@@ -376,12 +379,13 @@ header nav.flex.active .right {
   text-align: center;
 }
 
-@media (min-width: 64em) {
+@media (min-width: 40em) {
   .hero-section {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding-left: 10rem;
+    padding-top: 3rem;
+    padding-left: 1.5rem;
   }
   .hero-section .bg-img {
     -webkit-box-flex: 0;
@@ -403,18 +407,30 @@ header nav.flex.active .right {
     padding: 0;
   }
   .hero-section .headline .main-text {
-    font-size: 5.375rem;
+    font-size: 3.5rem;
     line-height: 1.1;
     margin-bottom: 0;
   }
   .hero-section .headline .second-text {
     max-width: 36rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
   .hero-section .headline .btn-cta {
     height: 3.5625rem;
     line-height: 3.5625rem;
     padding: 0 2.5rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .hero-section {
+    padding-left: 10rem;
+  }
+  .hero-section .headline .main-text {
+    font-size: 5.375rem;
+  }
+  .hero-section .headline .second-text {
+    font-size: 1.5rem;
   }
 }
 
@@ -425,6 +441,7 @@ header nav.flex.active .right {
 }
 
 .link-shorten .link-shorten-container {
+  position: relative;
   padding: 1.5rem;
   background: #3b3054 url("/images/bg-boost-mobile.svg") no-repeat top;
   background-position-x: 20vw;
@@ -448,9 +465,11 @@ header nav.flex.active .right {
 }
 
 .link-shorten .link-shorten-container input[type='text'] {
+  height: calc(3rem - 6px);
   font-size: 1rem;
   padding: 0 1rem;
   color: #35323e;
+  border: 3px solid transparent;
   outline: none;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -471,6 +490,34 @@ header nav.flex.active .right {
 
 .link-shorten .link-shorten-container input[type='text']::placeholder {
   color: #9e9aa7;
+}
+
+.link-shorten .link-shorten-container .error-container {
+  position: absolute;
+  overflow: hidden;
+  bottom: 1rem;
+  left: 4rem;
+  height: 2rem;
+  width: 50%;
+}
+
+.link-shorten .link-shorten-container .error-container .link-error {
+  -webkit-transform: translateY(-110%);
+          transform: translateY(-110%);
+  top: 0;
+  left: 0;
+  position: absolute;
+  font-size: 0.875rem;
+  color: #f46262;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+}
+
+.link-shorten .link-shorten-container .error-container .link-error:active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .link-shorten .links-shortened-container {
@@ -624,6 +671,8 @@ header nav.flex.active .right {
 .stat-section .stat-card-wrapper .stat-card {
   position: relative;
   width: 100%;
+  max-width: 34rem;
+  margin: auto;
   margin-bottom: 5.9rem;
   padding: 5.35rem 1.875rem 2.5rem;
   text-align: center;
@@ -672,12 +721,15 @@ header nav.flex.active .right {
 }
 
 @media (min-width: 40em) {
-  .stat-section {
-    max-width: 100%;
-  }
   .stat-section .headline .second-text {
     margin: auto;
     text-align: center;
+  }
+}
+
+@media (min-width: 89.95em) {
+  .stat-section {
+    max-width: 100%;
   }
   .stat-section .stat-card-wrapper {
     display: -webkit-box;
@@ -745,7 +797,7 @@ header nav.flex.active .right {
 
 @media (min-width: 40em) {
   .boost-section {
-    background: #3b3054 url("/images/bg-boost-desktop.svg") no-repeat center;
+    background: #3b3054 url("/images/bg-boost-desktop.svg") no-repeat center cover;
     background-position-x: -9rem;
     background-size: 120%;
   }
@@ -756,6 +808,13 @@ header nav.flex.active .right {
     height: 3.5625rem;
     line-height: 3.5625rem;
     padding: 0 2.5rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .boost-section {
+    background: #3b3054 url("/images/bg-boost-desktop.svg") no-repeat center;
+    background-size: 150%;
   }
 }
 
@@ -810,7 +869,7 @@ header nav.flex.active .right {
   margin-right: 1.125rem;
 }
 
-@media (min-width: 40em) {
+@media (min-width: 64em) {
   .footer {
     padding: 3.25rem 10rem;
   }

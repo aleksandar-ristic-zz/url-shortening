@@ -40,7 +40,7 @@
 		}
 	}
 
-	@include breakpoint-up(md) {
+	@include breakpoint-up(lg) {
 		padding: 3.25rem 10rem;
 		.footer-lists {
 			display: flex;

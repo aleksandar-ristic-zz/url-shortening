@@ -7,7 +7,8 @@
 	}
 
 	@include breakpoint-up(md) {
-		background: $darkViolet url('/images/bg-boost-desktop.svg') no-repeat center;
+		background: $darkViolet url('/images/bg-boost-desktop.svg') no-repeat center
+			cover;
 		background-position-x: -9rem;
 		background-size: 120%;
 
@@ -19,5 +20,10 @@
 			line-height: 3.5625rem;
 			padding: 0 $lg;
 		}
+	}
+
+	@include breakpoint-up(lg) {
+		background: $darkViolet url('/images/bg-boost-desktop.svg') no-repeat center;
+		background-size: 150%;
 	}
 }

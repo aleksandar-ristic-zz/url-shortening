@@ -9,6 +9,8 @@
 		.stat-card {
 			position: relative;
 			width: 100%;
+			max-width: 34rem;
+			margin: auto;
 			margin-bottom: 5.9rem;
 			padding: 5.35rem $md 2.5rem;
 			text-align: center;
@@ -51,16 +53,17 @@
 			}
 		}
 	}
-
 	@include breakpoint-up(md) {
-		max-width: 100%;
-
 		.headline {
 			.second-text {
 				margin: auto;
 				text-align: center;
 			}
 		}
+	}
+
+	@include breakpoint-up(xl) {
+		max-width: 100%;
 
 		.stat-card-wrapper {
 			display: flex;
