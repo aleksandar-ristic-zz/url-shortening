@@ -69,47 +69,49 @@
 			right: 0;
 			bottom: 0;
 			left: 0;
-			z-index: 5;
+			border-radius: 0.75rem;
 			background-color: hsla(0, 0, 0, 0.25);
 		}
 		// Clock loader
 		.loader {
-			--clock-color: $cyan;
-			--clock-width: 4rem;
-			--clock-radius: calc(var(--clock-width) / 2);
-			--clock-minute-length: calc(var(--clock-width) * 0.4);
-			--clock-hour-length: calc(var(--clock-width) * 0.2);
-			--clock-thickness: 0.2rem;
+			$clock-color: $cyan;
+			$clock-width: 4rem;
+			$clock-radius: 2rem;
+			$clock-minute-length: 1.6rem;
+			$clock-hour-length: 0.8rem;
+			$clock-thickness: 0.2rem;
 
-			position: absolute;
+			position: relative;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			width: var(--clock-width);
-			height: var(--clock-width);
-			border: 3px solid var(--clock-color);
+			width: $clock-width;
+			height: $clock-width;
+			border: 4px solid $clock-color;
 			border-radius: 50%;
 			z-index: 10;
+
 			&::before,
 			&::after {
-				position: absolute;
 				content: '';
-				top: calc(var(--clock-radius) * 0.25);
-				width: var(--clock-thickness);
-				background: var(--clock-color);
+				position: absolute;
+				top: 0.5rem;
+				width: $clock-thickness;
+				background: $clock-color;
 				border-radius: 10px;
-				transform-origin: center calc(100% - calc(var(--clock-thickness) / 2));
+				transform-origin: center calc(100% - 0.1rem);
 				animation: spin infinite linear;
 			}
 
 			&::before {
-				height: var(--clock-minute-length);
+				top: 0.25rem;
+				height: $clock-minute-length;
 				animation-duration: 2s;
 			}
 
 			&::after {
-				top: calc(var(--clock-radius) * 0.25 + var(--clock-hour-length));
-				height: var(--clock-hour-length);
+				top: 1.1rem;
+				height: $clock-hour-length;
 				animation-duration: 15s;
 			}
 		}
