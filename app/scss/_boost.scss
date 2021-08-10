@@ -5,4 +5,19 @@
 	.main-text {
 		color: $white;
 	}
+
+	@include breakpoint-up(md) {
+		background: $darkViolet url('/images/bg-boost-desktop.svg') no-repeat center;
+		background-position-x: -9rem;
+		background-size: 120%;
+
+		h2 {
+			font-size: 2.6rem;
+		}
+		button.btn-cta {
+			height: 3.5625rem;
+			line-height: 3.5625rem;
+			padding: 0 $lg;
+		}
+	}
 }

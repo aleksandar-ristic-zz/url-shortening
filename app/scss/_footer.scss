@@ -39,4 +39,55 @@
 			margin-right: $font18;
 		}
 	}
+
+	@include breakpoint-up(md) {
+		padding: 3.25rem 10rem;
+		.footer-lists {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+
+			.logo-name {
+				flex: 0 0 20%;
+				a {
+					line-height: 1;
+				}
+			}
+			ul {
+				text-align: left;
+				h4 {
+					margin-top: 0;
+					margin-bottom: $font18;
+					font-size: $font18;
+					font-weight: $fw700;
+				}
+				a {
+					font-size: 1rem;
+					font-weight: 400;
+					transition: color 0.3s ease;
+
+					&:hover {
+						color: $cyan;
+					}
+				}
+			}
+			ul.social {
+				margin-top: 0;
+
+				& > *:not(:last-child) {
+					margin-right: $font22;
+				}
+				a {
+					svg {
+						transition: fill 0.3s ease;
+						path {
+							&:hover {
+								fill: $cyan;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

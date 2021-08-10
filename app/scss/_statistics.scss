@@ -54,6 +54,14 @@
 
 	@include breakpoint-up(md) {
 		max-width: 100%;
+
+		.headline {
+			.second-text {
+				margin: auto;
+				text-align: center;
+			}
+		}
+
 		.stat-card-wrapper {
 			display: flex;
 

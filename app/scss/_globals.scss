@@ -73,8 +73,6 @@ ul {
 }
 .second-text {
 	margin-bottom: $md;
-	margin: auto;
-	text-align: center;
 	max-width: 34rem;
 }
 .btn {
@@ -94,5 +92,20 @@ ul {
 	&:hover,
 	&:focus {
 		background-color: $cyanLight;
+	}
+}
+.attribution {
+	width: 100%;
+	text-align: center;
+	color: $grayishViolet;
+	font-size: $font14;
+	background-color: $veryDarkViolet;
+	a {
+		color: $cyan;
+
+		&:hover,
+		&:visited {
+			color: $cyanLight;
+		}
 	}
 }
