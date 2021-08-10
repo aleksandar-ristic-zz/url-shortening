@@ -139,6 +139,108 @@ ul {
   color: #95e9e9;
 }
 
+@-webkit-keyframes to-right {
+  from {
+    -webkit-transform: translateX(-150%);
+            transform: translateX(-150%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes to-right {
+  from {
+    -webkit-transform: translateX(-150%);
+            transform: translateX(-150%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes to-left {
+  from {
+    -webkit-transform: translateX(150%);
+            transform: translateX(150%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes to-left {
+  from {
+    -webkit-transform: translateX(150%);
+            transform: translateX(150%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes to-top {
+  from {
+    -webkit-transform: translateY(200%);
+            transform: translateY(200%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes to-top {
+  from {
+    -webkit-transform: translateY(200%);
+            transform: translateY(200%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes to-bottom {
+  from {
+    -webkit-transform: translateY(-200%);
+            transform: translateY(-200%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes to-bottom {
+  from {
+    -webkit-transform: translateY(-200%);
+            transform: translateY(-200%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
+}
+
 header {
   position: relative;
   padding: 2.5rem 0;
@@ -492,6 +594,26 @@ header nav.flex.active .right {
   color: #9e9aa7;
 }
 
+.link-shorten .link-shorten-container input[type='text'].active {
+  border: 3px solid #f46262;
+}
+
+.link-shorten .link-shorten-container input[type='text'].active::-webkit-input-placeholder {
+  color: #f46262;
+}
+
+.link-shorten .link-shorten-container input[type='text'].active:-ms-input-placeholder {
+  color: #f46262;
+}
+
+.link-shorten .link-shorten-container input[type='text'].active::-ms-input-placeholder {
+  color: #f46262;
+}
+
+.link-shorten .link-shorten-container input[type='text'].active::placeholder {
+  color: #f46262;
+}
+
 .link-shorten .link-shorten-container .error-container {
   position: absolute;
   overflow: hidden;
@@ -515,9 +637,69 @@ header nav.flex.active .right {
   transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
 
-.link-shorten .link-shorten-container .error-container .link-error:active {
+.link-shorten .link-shorten-container .error-container .link-error.active {
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+.link-shorten .link-shorten-container .cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.link-shorten .link-shorten-container .loader {
+  --clock-color: $cyan;
+  --clock-width: 4rem;
+  --clock-radius: calc(var(--clock-width) / 2);
+  --clock-minute-length: calc(var(--clock-width) * 0.4);
+  --clock-hour-length: calc(var(--clock-width) * 0.2);
+  --clock-thickness: 0.2rem;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: var(--clock-width);
+  height: var(--clock-width);
+  border: 3px solid var(--clock-color);
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.link-shorten .link-shorten-container .loader::before, .link-shorten .link-shorten-container .loader::after {
+  position: absolute;
+  content: '';
+  top: calc(var(--clock-radius) * 0.25);
+  width: var(--clock-thickness);
+  background: var(--clock-color);
+  border-radius: 10px;
+  -webkit-transform-origin: center calc(100% - calc(var(--clock-thickness) / 2));
+          transform-origin: center calc(100% - calc(var(--clock-thickness) / 2));
+  -webkit-animation: spin infinite linear;
+          animation: spin infinite linear;
+}
+
+.link-shorten .link-shorten-container .loader::before {
+  height: var(--clock-minute-length);
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+.link-shorten .link-shorten-container .loader::after {
+  top: calc(var(--clock-radius) * 0.25 + var(--clock-hour-length));
+  height: var(--clock-hour-length);
+  -webkit-animation-duration: 15s;
+          animation-duration: 15s;
 }
 
 .link-shorten .links-shortened-container {
@@ -537,6 +719,7 @@ header nav.flex.active .right {
   -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
   margin-bottom: 1.5rem;
+  overflow: hidden;
 }
 
 .link-shorten .links-shortened-container .link-shortened-card > * {
@@ -546,15 +729,21 @@ header nav.flex.active .right {
 .link-shorten .links-shortened-container .link-shortened-card .original {
   color: #35323e;
   border-bottom: 1px solid #e9edfc;
+  -webkit-animation: to-right 0.5s ease forwards;
+          animation: to-right 0.5s ease forwards;
 }
 
 .link-shorten .links-shortened-container .link-shortened-card .shortened {
   color: #2acfcf;
+  -webkit-animation: to-bottom 0.75s ease-in forwards;
+          animation: to-bottom 0.75s ease-in forwards;
 }
 
 .link-shorten .links-shortened-container .link-shortened-card .btn-wrapper {
   width: 100%;
   padding: 0 1.5rem 1rem;
+  -webkit-animation: to-top 1s ease-out forwards;
+          animation: to-top 1s ease-out forwards;
 }
 
 .link-shorten .links-shortened-container .link-shortened-card .btn-wrapper .copy-btn {

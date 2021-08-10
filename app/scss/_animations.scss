@@ -1,0 +1,37 @@
+@keyframes to-right {
+	from {
+		transform: translateX(-150%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+@keyframes to-left {
+	from {
+		transform: translateX(150%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+@keyframes to-top {
+	from {
+		transform: translateY(200%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+@keyframes to-bottom {
+	from {
+		transform: translateY(-200%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+@keyframes spin {
+	to {
+		transform: rotate(1turn);
+	}
+}
