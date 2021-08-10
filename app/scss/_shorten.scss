@@ -1,7 +1,7 @@
 .link-shorten {
+	position: relative;
 	padding-top: 2.35rem;
 	padding-bottom: 5.5rem;
-	background-image: linear-gradient(180deg, $white 10%, $bg-gray 45%);
 
 	.link-shorten-container {
 		padding: 1.5rem;
@@ -25,6 +25,7 @@
 			padding: 0 1rem;
 			color: $veryDarkBlue;
 			outline: none;
+			flex: 1;
 		}
 		input[type='text']::placeholder {
 			color: $grayishViolet;
@@ -68,6 +69,85 @@
 					}
 				}
 			}
+		}
+	}
+	&::after {
+		content: '';
+		position: absolute;
+		top: 7.35rem;
+		left: 0;
+		height: calc(100% - 7.35rem);
+		width: 100%;
+		background-color: $bg-gray;
+		z-index: -1;
+	}
+
+	@include breakpoint-up(md) {
+		padding-top: 3rem;
+		max-width: 100%;
+
+		.link-shorten-container {
+			padding: 3.25rem 4rem;
+			background: $darkViolet url('/images/bg-shorten-desktop.svg') no-repeat;
+			background-position-x: 50%;
+			background-size: 110%;
+			flex-direction: row;
+
+			input[type='text'] {
+				height: 4rem;
+				line-height: 4rem;
+			}
+			button {
+				height: 4rem;
+				line-height: 4rem;
+				font-weight: 400;
+				padding: 0 2.6125rem;
+
+				transition: background-color 0.3s ease;
+				&:hover {
+					background-color: $cyanLight;
+				}
+			}
+		}
+
+		.links-shortened-container {
+			.link-shortened-card {
+				display: flex;
+				align-items: center;
+				padding: 0.75rem 2rem 0.75rem 1.25rem;
+
+				& > * {
+					padding: 0;
+				}
+
+				.original {
+					flex: 0 0 50%;
+					border: 0;
+				}
+				.shortened {
+					flex: 1;
+					text-align: right;
+				}
+				.btn-wrapper {
+					width: fit-content;
+					height: $lg;
+					padding: 0 0 0 $font24;
+					.copy-btn {
+						height: $lg;
+						line-height: $lg;
+						padding: 0 2rem;
+						transition: background-color 0.3s ease;
+						&:hover {
+							background-color: $cyanLight;
+						}
+					}
+				}
+			}
+		}
+
+		&::after {
+			top: 8.2rem;
+			height: calc(100%-8.2rem);
 		}
 	}
 }

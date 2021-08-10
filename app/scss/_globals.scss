@@ -73,6 +73,9 @@ ul {
 }
 .second-text {
 	margin-bottom: $md;
+	margin: auto;
+	text-align: center;
+	max-width: 34rem;
 }
 .btn {
 	color: $white;

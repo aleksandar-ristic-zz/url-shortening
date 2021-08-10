@@ -138,6 +138,10 @@ header {
 						margin-left: $font24;
 						line-height: $lg;
 						padding: 0 $font22;
+						transition: background-color 0.3s ease;
+						&:hover {
+							background-color: $cyanLight;
+						}
 					}
 				}
 			}

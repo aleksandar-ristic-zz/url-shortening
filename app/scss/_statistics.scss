@@ -25,7 +25,6 @@
 				border-radius: 50%;
 				background-color: $darkViolet;
 				transform: translate(-50%, -50%);
-				z-index: 5;
 
 				img {
 					position: relative;
@@ -49,6 +48,65 @@
 				height: 3rem;
 				background-color: $cyan;
 				transform: translateX(-50%);
+			}
+		}
+	}
+
+	@include breakpoint-up(md) {
+		max-width: 100%;
+		.stat-card-wrapper {
+			display: flex;
+
+			& > *:nth-child(1) {
+				margin-bottom: calc(5.9rem + 5.5rem);
+
+				&::before {
+					content: '';
+					position: absolute;
+					background-color: $cyan;
+					top: 10rem;
+					width: 2rem;
+					height: 0.5rem;
+					right: -2rem;
+				}
+				&::after {
+					display: none;
+				}
+			}
+			& > .stat-card:nth-child(2) {
+				margin-top: 2.75rem;
+				margin-left: 2rem;
+				margin-right: 2rem;
+				margin-bottom: calc(2.75rem + 5.9rem);
+
+				&::before {
+					content: '';
+					position: absolute;
+					background-color: $cyan;
+					top: 7.25rem;
+					width: 2rem;
+					height: 0.5rem;
+					right: -2rem;
+				}
+				&::after {
+					display: none;
+				}
+			}
+			& > *:nth-child(3) {
+				margin-top: 5.5rem;
+			}
+
+			.stat-card {
+				padding-top: 4.5rem;
+				.stat-img {
+					left: 4.75rem;
+				}
+				.stat-head {
+					text-align: left;
+				}
+				.stat-text {
+					text-align: left;
+				}
 			}
 		}
 	}
