@@ -1,17 +1,15 @@
 ;(() => {
-	const mobileMenu = document.querySelector('.mobile-menu')
-	const btnShorten = document.querySelector('.shorten-btn')
-
-	mobileMenu.addEventListener('click', menuResolve)
-	btnShorten.addEventListener('click', checkLink)
+	'use strict'
+	window.addEventListener('load', loadFromLocalStorage)
+	document.querySelector('.mobile-menu').addEventListener('click', menuResolve)
+	document.querySelector('.shorten-btn').addEventListener('click', checkLink)
 })()
 
 // Main class for Links
 class Link {
-	constructor(original, full_short, short) {
+	constructor(original, short) {
 		this.original = original
 		this.short = short
-		this.full_short = full_short
 	}
 
 	show = () => {
@@ -42,8 +40,30 @@ class Link {
 		card.appendChild(btnWrapper)
 		container.appendChild(card)
 	}
-	copyLink = () => {
-		console.log(this.full_short)
+	copyLink = function () {
+		const text = this.parentElement.previousSibling.innerText
+		const link = `https://${text}`
+
+		const oldText = this.innerText
+		const oldBg = this.style.backgroundColor
+		const oldFont = this.style.fontSize
+
+		navigator.clipboard
+			.writeText(link)
+			.then(() => {
+				this.innerText = 'Copied!'
+				this.style.backgroundColor = 'hsl(257, 27%, 26%)'
+				this.style.fontSize = '1rem'
+			})
+			.catch(error => {
+				inputError('Oh no! Try again!')
+			})
+
+		setTimeout(() => {
+			this.innerText = oldText
+			this.style.backgroundColor = oldBg
+			this.style.fontSize = oldFont
+		}, 2000)
 	}
 }
 
@@ -80,34 +100,45 @@ function inputError(errorText = 'Please add a link') {
 		errorEl.classList.remove('active')
 	}, 5000)
 }
+// Fetch Shortened link
 const shortenLink = async original => {
 	showLoader()
 	try {
 		const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${original}`)
-
 		const data = await res.json()
 
 		await createLink(data.result)
 	} catch (error) {
 		console.log(error)
-		inputError('Oh no! Try again later.')
+		inputError('Check your link, then try again.')
 		hideLoader()
 	}
 }
 // Create class
 function createLink(data) {
-	const link = new Link(
-		data.original_link,
-		data.full_short_link3,
-		data.short_link3
-	)
+	const link = new Link(data.original_link, data.short_link3)
 
 	hideLoader()
 	link.show()
-
-	addToArray(link)
+	addToArray()
 }
-function addToArray(link) {}
+// Creates arr from links and saves to local storage
+function addToArray() {
+	let objArr = []
+	const arr = document.querySelectorAll('.link-shortened-card')
+
+	if (arr.length > 5) arr[0].remove()
+
+	arr.forEach(link => {
+		const obj = {
+			original: link.childNodes[0].innerText,
+			short: link.childNodes[1].innerText
+		}
+		objArr.push(obj)
+	})
+
+	saveToLocalStorage(objArr)
+}
 // Loader controls
 function showLoader() {
 	const container = document.querySelector('.link-shorten-container')
@@ -120,9 +151,28 @@ function showLoader() {
 	container.appendChild(loader)
 }
 function hideLoader() {
-	document.querySelector('.cover').remove()
-	document.querySelector('.loader').remove()
+	const cover = document.querySelector('.cover')
+	const loader = document.querySelector('.loader')
+	if (!loader) return
+
+	cover.remove()
+	loader.remove()
 }
 // Local Storage
-function saveToLocalStorage() {}
-function loadFromLocalStorage() {}
+function saveToLocalStorage(arr) {
+	localStorage.setItem('link-data', JSON.stringify(arr))
+}
+function loadFromLocalStorage() {
+	const json = localStorage.getItem('link-data')
+	if (json === null) return
+
+	const linksArr = JSON.parse(json)
+	showLinks(linksArr)
+}
+// Show links on load
+function showLinks(linksArr) {
+	linksArr.forEach(link => {
+		const l = new Link(link.original, link.short)
+		l.show()
+	})
+}
