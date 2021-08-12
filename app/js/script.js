@@ -23,6 +23,10 @@ class Link {
 		const btnWrapper = document.createElement('div')
 		const btn = document.createElement('button')
 
+		const att = document.createAttribute('title')
+		att.value = this.original
+		or.setAttributeNode(att)
+
 		or.classList.add('original')
 		sh.classList.add('shortened')
 		btnWrapper.classList.add('btn-wrapper')
@@ -32,13 +36,16 @@ class Link {
 		btn.innerText = 'Copy'
 		btnWrapper.appendChild(btn)
 
-		or.innerText = this.original
+		or.innerText =
+			this.original.length > 34
+				? this.original.substring(0, 30) + '...'
+				: this.original
 		sh.innerText = this.short
 
 		card.appendChild(or)
 		card.appendChild(sh)
 		card.appendChild(btnWrapper)
-		container.appendChild(card)
+		container.prepend(card)
 	}
 	copyLink = function () {
 		const text = this.parentElement.previousSibling.innerText
@@ -46,30 +53,24 @@ class Link {
 
 		const oldText = this.innerText
 		const oldBg = this.style.backgroundColor
-		const oldFont = this.style.fontSize
 
 		navigator.clipboard
 			.writeText(link)
 			.then(() => {
 				this.innerText = 'Copied!'
 				this.style.backgroundColor = 'hsl(257, 27%, 26%)'
-				this.style.fontSize = '1rem'
 			})
 			.catch(error => {
-				inputError('Oh no! Try again!')
+				inputError('Oh no! Check your link, try again!')
 			})
 
 		setTimeout(() => {
 			this.innerText = oldText
 			this.style.backgroundColor = oldBg
-			this.style.fontSize = oldFont
 		}, 2000)
 	}
 }
-
-function toggleClass() {
-	this.classList.toggle('active')
-}
+// Mobile menu
 function menuResolve() {
 	this.classList.toggle('active')
 	document.getElementsByTagName('nav')[0].classList.toggle('active')
@@ -118,7 +119,9 @@ const shortenLink = async original => {
 function createLink(data) {
 	const link = new Link(data.original_link, data.short_link3)
 
+	document.querySelector('.shorten').value = ''
 	hideLoader()
+
 	link.show()
 	addToArray()
 }
@@ -127,7 +130,7 @@ function addToArray() {
 	let objArr = []
 	const arr = document.querySelectorAll('.link-shortened-card')
 
-	if (arr.length > 5) arr[0].remove()
+	if (arr.length > 5) arr[4].remove()
 
 	arr.forEach(link => {
 		const obj = {
@@ -167,6 +170,7 @@ function loadFromLocalStorage() {
 	if (json === null) return
 
 	const linksArr = JSON.parse(json)
+	linksArr.length > 5 ? linksArr.pop() : linksArr
 	showLinks(linksArr)
 }
 // Show links on load

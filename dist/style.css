@@ -549,8 +549,8 @@ header nav.flex.active .right {
 .link-shorten .link-shorten-container {
   position: relative;
   padding: 1.5rem;
-  background: #3b3054 url("/images/bg-boost-mobile.svg") no-repeat top;
-  background-position-x: 20vw;
+  background: #3b3054 url("/images/bg-shorten-mobile.svg") no-repeat top;
+  background-size: 135%;
   border-radius: 0.75rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -568,6 +568,10 @@ header nav.flex.active .right {
   line-height: 3rem;
   border: 0;
   border-radius: 0.5rem;
+}
+
+.link-shorten .link-shorten-container button {
+  cursor: pointer;
 }
 
 .link-shorten .link-shorten-container input[type='text'] {
@@ -624,7 +628,7 @@ header nav.flex.active .right {
   bottom: 1rem;
   left: 4rem;
   height: 2rem;
-  width: 50%;
+  width: 100%;
 }
 
 .link-shorten .link-shorten-container .error-container .link-error {
@@ -644,6 +648,19 @@ header nav.flex.active .right {
 .link-shorten .link-shorten-container .error-container .link-error.active {
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+@media (max-width: 49.975em) {
+  .link-shorten .link-shorten-container .error-container {
+    left: 1.5rem;
+    bottom: 3.8rem;
+  }
+}
+
+@media (max-width: 49.975em) {
+  .link-shorten .link-shorten-container {
+    gap: 1.2rem;
+  }
 }
 
 .link-shorten .links-shortened-container {
@@ -714,7 +731,7 @@ header nav.flex.active .right {
   z-index: -1;
 }
 
-@media (min-width: 40em) {
+@media (min-width: 50em) {
   .link-shorten {
     padding-top: 3rem;
     max-width: 100%;
@@ -777,8 +794,8 @@ header nav.flex.active .right {
   }
   .link-shorten .links-shortened-container .link-shortened-card .btn-wrapper .copy-btn {
     height: 2.5rem;
-    line-height: 2.5rem;
-    padding: 0 2rem;
+    line-height: 1;
+    width: 7.18rem;
     -webkit-transition: background-color 0.3s ease;
     transition: background-color 0.3s ease;
   }
@@ -1068,6 +1085,12 @@ header nav.flex.active .right {
   background-color: rgba(0, 0, 0, 0.25);
 }
 
+@media (max-width: 63.975em) {
+  .cover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
 .loader {
   position: relative;
   display: -webkit-box;
@@ -1081,7 +1104,7 @@ header nav.flex.active .right {
           align-items: center;
   width: 4rem;
   height: 4rem;
-  border: 4px solid #2acfcf;
+  border: 4px solid #95e9e9;
   border-radius: 50%;
   z-index: 10;
 }
@@ -1091,7 +1114,7 @@ header nav.flex.active .right {
   position: absolute;
   top: 0.5rem;
   width: 0.2rem;
-  background: #2acfcf;
+  background: #95e9e9;
   border-radius: 0.625rem;
   -webkit-transform-origin: center calc(100% - 0.1rem);
           transform-origin: center calc(100% - 0.1rem);
@@ -1111,4 +1134,14 @@ header nav.flex.active .right {
   height: 0.8rem;
   -webkit-animation-duration: 15s;
           animation-duration: 15s;
+}
+
+@media (max-width: 49.975em) {
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
 }

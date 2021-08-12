@@ -6,10 +6,14 @@
 	left: 0;
 	border-radius: 0.75rem;
 	background-color: hsla(0, 0, 0, 0.25);
+
+	@include breakpoint-down(md) {
+		background-color: hsla(0, 0, 0, 0.5);
+	}
 }
 // Clock loader
 .loader {
-	$clock-color: $cyan;
+	$clock-color: $cyanLight;
 	$clock-width: 4rem;
 	$clock-radius: 2rem;
 	$clock-minute-length: 1.6rem;
@@ -48,5 +52,12 @@
 		top: 1.1rem;
 		height: $clock-hour-length;
 		animation-duration: 15s;
+	}
+
+	@include breakpoint-down(tab) {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 }

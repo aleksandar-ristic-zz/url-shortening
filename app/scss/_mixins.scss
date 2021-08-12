@@ -4,6 +4,7 @@
 // 640px 1024px 1400px
 $breakpoints-up: (
 	'md': '40em',
+	'tab': '50em',
 	'lg': '64em',
 	'xl': '89.95em'
 );
@@ -12,6 +13,7 @@ $breakpoints-up: (
 // 639px 1023px 1399px
 $breakpoints-down: (
 	'sm': '39.975em',
+	'tab': '49.975em',
 	'md': '63.975em',
 	'lg': '87.4375em'
 );
